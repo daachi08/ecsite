@@ -1,27 +1,39 @@
 Vue.filter('number_format',function(val) {
-  return val.toLocaleString();
-});
+    return val.toLocaleString();
+  });
 
 var app = new Vue({
-  el: "#app",
-  data:{
-    count:0,
-    showSaleItem: false,
-    showDelvFree:false,
-    sortOrder: 1,
-    products: [
-      { id:1, name: 'タイプA',price: 1100, image:'images/01.jpg',
-    delv: 0, isSale: true },
-    { id:2, name: 'タイプB',price: 1100, image:'images/02.jpg',
-    delv: 0, isSale: true },      
-    { id:3, name: 'タイプC',price: 1100, image:'images/03.jpg',
-    delv: 240, isSale: true },
-    { id:4, name: 'タイプD',price: 990, image:'images/04.jpg',
-    delv: 0, isSale: true },
-    { id:5, name: 'タイプE',price: 990, image:'images/05.jpg',
-    delv: 0, isSale: false },
-    {id:6, name: 'タイプF',price: 1100, image:'images/06.jpg',
-    delv: 0, isSale: false },
+    el: "#app",
+    data:{
+      
+    taxRate: 0.1,
+    // 料金
+    basePrice_A: 1000,
+    basePrice_B: 2000,
+    basePrice_C: 3000,
+    basePrice_D: 2500,
+    basePrice_E: 2000,
+    basePrice_F: 1500,
+      
+    optPrice: 0,
 
-    ]
-  },
+    opt1: 0,                 
+    opt2: 0,
+    opt3: 0,           
+    opt4: 0,           
+    opt5: 0,           
+    opt6: 0,           
+
+    },
+    computed: {
+        sum:function() {
+            return this.opt1 * this.basePrice_A + 
+                   this.opt2 * this.basePrice_B +
+                   this.opt3 * this.basePrice_C + 
+                   this.opt4 * this.basePrice_D + 
+                   this.opt5 * this.basePrice_E + 
+                   this.opt6 * this.basePrice_F 
+                   
+        },
+    },
+  });
