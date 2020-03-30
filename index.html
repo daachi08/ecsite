@@ -1,78 +1,137 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <title>商品一覧</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="main.css">
-</head>
-<body>
-<div id="app">
-  <div class="container">
-    <h1 class="pageTitle">商品一覧</h1>
-    <!--検索欄-->
-    <div class="search">
-      <div class="result">
-        検索結果 <span class="count">{{filteredList.length}}件</span>
-      </div>
-      <div class="condition">
-        <div class="target">
-          <label><input type="checkbox" v-model="showSaleItem"> セール対象</label>
-          <label><input type="checkbox" v-model="showDelvFree"> 送料無料</label>
-        </div>
-        <div class="sort">
-          <label for="sort">並び替え{{sortOrder}}</label>
-          <select id="sort" class="sorting" v-model.number="sortOrder">
-            <option value="1">標準</option>
-            <option value="2">価格が安い順</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <!--商品一覧-->
-    <div class="list">
-      <div class="item" v-for="product in filteredList" v-bind:key="product.id">
-        <figure class="image">
-          <template v-if="product.isSale">
-          <div class="status">SALE</div>
-        </template>
-          <img v-bind:src="product.image" alt="">
-          <figcaption v-html="product.name"></figcaption>
-        </figure>
-        <div class="detail">
-          <div class="price"><span>{{product.price | number_format}}</span>円（税込）</div>
 
-          <template v-if="product.delv== 0">
-          <div class="shipping-fee none">送料無料</div>
-        </template>
-        <template v-else>
-            <div class="shipping-fee">+送料{{product.delv | number_format}}円</div>
-        </template>
-        <div class="buy">
-            <div class="input-group">
-                <input class="form-control" type="number" id="opt4" value="0" min="0" max="30" v-model="d">
-                <div class="input-group-append">
-                  <label class="input-group-text" for="opt4">枚</label>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>ecsite</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--style css-->
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--js-->
+    <script src="main.js"></script>
+    <!--font-awesome-->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <!-- wow -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"
+        type="text/css" media="all">
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- header -->
+        <header class="header">   
+            <div class="inner">
+            </div>
+        </header><!-- header end -->
+
+        <div id="app">
+            <div class="inner">
+                <div class="item">
+                    <img src="/images/01.jpg" alt="">
+                    <h2>タイプA</h2>
+                    <div class="price"><span >{{basePrice_A | number_format}}</span>円（税込）</div>
+                    <div class="input-group">
+                            <input class="form-control" type="number" id="opt1" value="0" min="0" max="30" v-model.number="opt1">
+                            <div class="input-group-append">
+                              <label class="input-group-text" for="opt1">枚</label>
+                            </div>
+                    </div>
                 </div>
+                <div class="item">
+                        <img src="/images/01.jpg" alt="">
+                        <h2>タイプB</h2>
+                        <div class="price"><span >{{basePrice_B | number_format}}</span>円（税込）</div>
+                        <div class="input-group">
+                                <input class="form-control" type="number" id="opt2" value="0" min="0" max="30" v-model.number="opt2">
+                                <div class="input-group-append">
+                                  <label class="input-group-text" for="opt1">枚</label>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                            <img src="/images/01.jpg" alt="">
+                            <h2>タイプC</h2>
+                            <div class="price"><span >{{basePrice_C | number_format}}</span>円（税込）</div>
+                            <div class="input-group">
+                                    <input class="form-control" type="number" id="opt3" value="0" min="0" max="30" v-model.number="opt3">
+                                    <div class="input-group-append">
+                                      <label class="input-group-text" for="opt1">枚</label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                                <img src="/images/01.jpg" alt="">
+                                <h2>タイプD</h2>
+                                <div class="price"><span >{{basePrice_D | number_format}}</span>円（税込）</div>
+                                <div class="input-group">
+                                        <input class="form-control" type="number" id="opt4" value="0" min="0" max="30" v-model.number="opt4">
+                                        <div class="input-group-append">
+                                          <label class="input-group-text" for="opt1">枚</label>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                    <img src="/images/01.jpg" alt="">
+                                    <h2>タイプE</h2>
+                                    <div class="price"><span >{{basePrice_E | number_format}}</span>円（税込）</div>
+                                    <div class="input-group">
+                                            <input class="form-control" type="number" id="opt5" value="0" min="0" max="30" v-model.number="opt5">
+                                            <div class="input-group-append">
+                                              <label class="input-group-text" for="opt1">枚</label>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                        <img src="/images/01.jpg" alt="">
+                                        <h2>タイプF</h2>
+                                        <div class="price"><span >{{basePrice_F | number_format}}</span>円（税込）</div>
+                                        <div class="input-group">
+                                                <input class="form-control" type="number" id="opt6" value="0" min="0" max="30" v-model.number="opt6">
+                                                <div class="input-group-append">
+                                                  <label class="input-group-text" for="opt1">枚</label>
+                                                </div>
+                                        </div>
+                                    </div>
+                        <div class="total">
+                        小計金額
+                        <input type="text"  id="sum"  v-bind:value="sum | number_format" >円
+                      </div>
+                      <div class="shopping-fee">
+                            小計金額
+                            <input type="text"  id="tax"  v-bind:value="sum | number_format" >円
+                          </div>
             </div>
         </div>
- 
-        </div>
-      </div>
-      
-      
-      
-      
-      
+
+
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="inner">
+
+            </div>
+        </footer><!-- footer end -->
+
     </div>
-    <div class="total">
-        合計金額
-        <input type="text" name="" id=""   >{{sum}}円
-      </div>
-  </div>
-</div>
+    <!--wrapper end-->
+
     <!-- vue js-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <!-- script js-->
+    <script src="js/script.js"></script>
+    <!-- wow -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
 </body>
+
 </html>
