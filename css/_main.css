@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* ルートのフォントサイズを16pxに設定*/
+@media (max-width: 1180px) {
+  .aa {
+    color: red;
+  }
+}
+
+@media (max-width: 1179px) {
+  .aa {
+    color: blue;
+  }
+}
+
+@media (max-width: 767px) {
+  .aa {
+    color: yellow;
+  }
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 767px) {
+  .items {
+    flex-direction: column;
+  }
+}
+
+.item {
+  width: 33%;
+  margin-top: 20px;
+}
+
+.item img {
+  width: 350px;
+  height: auto;
+}
+
+.item h2 {
+  text-align: center;
+}
+
+.price {
+  margin: 10px;
+  text-align: center;
+}
+
+.input-group {
+  text-align: center;
+}
+
+.total {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/*
+    モジュール
+*/

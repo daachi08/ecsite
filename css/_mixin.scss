@@ -1,0 +1,17 @@
+// ミックスインの定義
+@mixin include {
+	text-align: center;
+
+}
+
+
+
+ // float 解除
+ @mixin clear {
+
+ 	&::after {
+ 		content: "";
+ 		display: block;
+ 		clear: both;
+ 	}
+ }

@@ -1,0 +1,48 @@
+@import "_color.scss";
+@import "_typography.scss";
+@import "_mixin.scss";
+@import "_responsive.scss";
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    @include sp {
+        flex-direction: column;
+
+    }
+}
+
+.item {
+    width: 33%;
+    margin-top: 20px;
+    img {
+        width: 350px;
+        height: auto;
+    }
+    h2 {
+        text-align: center;
+    }
+}
+
+.price {
+    margin: 10px;
+    text-align: center;
+}
+
+
+.input-group {
+    text-align: center;
+}
+
+.total {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+/*
+    モジュール
+*/
+
+
+
